@@ -188,8 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				02C158FB2BECC3DF00633801 /* RMCharacterListViewViewModel.swift */,
-				028DC1E12C2AC588003A5984 /* RMCharacterDetailViewViewModel.swift */,
 				02C159032BECDBF200633801 /* RMCharacterCollectionViewCellViewModel.swift */,
+				028DC1E12C2AC588003A5984 /* RMCharacterDetailViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

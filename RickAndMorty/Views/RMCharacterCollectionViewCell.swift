@@ -43,6 +43,10 @@ final class RMCharacterCollectionViewCell: UICollectionViewCell {
         contentView.addSubviews(imageView, nameLabel, statusLabel)
         addConstraints()
         setupLayer()
+       
+        registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { [](self: Self, previousTraitCollection: UITraitCollection) in
+            self.setupLayer()
+        })
     }
       
     required init?(coder: NSCoder) {
@@ -77,12 +81,7 @@ final class RMCharacterCollectionViewCell: UICollectionViewCell {
             imageView.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -3),
         ])
     }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        setupLayer()
-    }
-    
+     
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil

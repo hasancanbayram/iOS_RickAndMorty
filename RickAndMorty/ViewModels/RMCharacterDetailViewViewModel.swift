@@ -5,7 +5,7 @@
 //  Created by Hasan Can Bayram on 25.06.2024.
 //
 
-import Foundation
+import UIKit
 
 final class RMCharacterDetailViewViewModel {
     private let character: RMCharacter
@@ -30,6 +30,39 @@ final class RMCharacterDetailViewViewModel {
     
     public var title: String {
         return character.name.uppercased()
+    }
+    
+    
+    // MARK: - Layouts
+    public func createPhotoSectionLayout() -> NSCollectionLayoutSection {
+        let layoutSize1 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let layoutSize2 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5))
+        let item = NSCollectionLayoutItem(layoutSize: layoutSize1)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize2, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
+    
+    public func createInfoSectionLayout() -> NSCollectionLayoutSection {
+        let layoutSize1 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
+        let layoutSize2 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(150))
+        let item = NSCollectionLayoutItem(layoutSize: layoutSize1)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize2, subitems: [item, item])
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
+    
+    public func createEpisodeSectionLayout() -> NSCollectionLayoutSection {
+        let layoutSize1 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let layoutSize2 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .absolute(150))
+        let item = NSCollectionLayoutItem(layoutSize: layoutSize1)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 8)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize2, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        return section
     }
     
 }
